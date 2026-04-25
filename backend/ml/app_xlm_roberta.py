@@ -254,7 +254,7 @@ from google.genai import types
 import os
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(override=True)
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
 
 SYSTEM_PROMPT = """You are MindBot, a compassionate and knowledgeable mental health assistant on the Mind Mender website.

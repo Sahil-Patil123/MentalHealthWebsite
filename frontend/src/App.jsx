@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import Home from "./pages/Home";
 import Blogs from "./pages/Blogs";
-import HealthProblems from "./pages/HealthProblems";
+import SelfAssessment from "./pages/SelfAssessment";
 import Sessions from "./pages/sessions";
 import AboutUs from "./pages/AboutUs";
 import Quiz from "./pages/Quiz";
@@ -75,10 +75,10 @@ const Layout = () => {
             }
           />
           <Route
-            path="/healthProblems"
+            path="/self-assessment"
             element={
               <ProtectedRoute>
-                <HealthProblems />
+                <SelfAssessment />
               </ProtectedRoute>
             }
           />

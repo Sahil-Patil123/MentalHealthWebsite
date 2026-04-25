@@ -27,7 +27,7 @@ const features = [
     icon: "🔍",
     title: "Symptom Checker",
     description: "Learn more about your symptoms and what they might indicate",
-    link: "/healthProblems",
+    link: "/self-assessment",
     color: "from-green-500 to-emerald-500"
   },
   {

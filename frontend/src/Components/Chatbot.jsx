@@ -65,11 +65,16 @@ const Chatbot = () => {
         { from: "bot", text: data.reply, quickReplies: [] },
       ]);
     } catch (err) {
+      const errorMessage = err.message || "";
+      const displayMessage = errorMessage.includes("API key") || errorMessage.includes("403") 
+        ? `⚠️ **API Key Error:** ${errorMessage}` 
+        : "⚠️ I'm having trouble connecting right now. Please make sure the backend server is running.";
+        
       setMessages((prev) => [
         ...prev,
         {
           from: "bot",
-          text: "⚠️ I'm having trouble connecting right now. Please make sure the backend server is running and your Gemini API key is configured.",
+          text: displayMessage,
           quickReplies: [],
         },
       ]);
