@@ -82,11 +82,11 @@ cd frontend
 # Install dependencies
 npm install
 
-# Start the Vite development server (usually runs on port 5173)
+# Start the Vite development server 
 npm run dev
 ```
 
-Once all three servers are running, open your browser and navigate to `http://localhost:5173` to start using Mind Mender!
+Once all three servers are running, open your browser and navigate to `http://localhost:3000` to start using Mind Mender!
 
 ---
 *Disclaimer: Mind Mender is designed to assist and provide guidance, but it is not a replacement for professional clinical diagnosis. Always consult a certified healthcare professional.*
