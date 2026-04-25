@@ -251,8 +251,11 @@ def health():
 # ─────────────────────────────────────────────────────────
 from google import genai
 from google.genai import types
+import os
+from dotenv import load_dotenv
 
-GEMINI_API_KEY = "AIzaSyCecgHtcZhVEpFj61iIM90gXYH4AK_SAqg"   # ← paste your key here
+load_dotenv()
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
 
 SYSTEM_PROMPT = """You are MindBot, a compassionate and knowledgeable mental health assistant on the Mind Mender website.
 
