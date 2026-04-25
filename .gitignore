@@ -1,0 +1,25 @@
+# Node.js
+node_modules/
+.env
+
+# Python / ML
+__pycache__/
+*.pyc
+venv/
+env/
+.venv/
+
+# Ignore large ML models (you shouldn't push 1GB models to GitHub)
+backend/ml/xlm_roberta_phq9_model/
+*.pt
+*.bin
+*.h5
+
+# OS generated files
+.DS_Store
+desktop.ini
+Thumbs.db
+
+# Frontend builds
+frontend/dist/
+frontend/build/
