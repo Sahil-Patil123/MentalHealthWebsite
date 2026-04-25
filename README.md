@@ -69,7 +69,7 @@ cd backend
 # Install dependencies
 npm install
 
-# Start the Node server (runs on port 4000)
+# Start the Node server (runs on port 5000)
 npm start
 ```
 
