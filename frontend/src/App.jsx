@@ -32,127 +32,134 @@ const PublicRoute = ({ children }) => {
   return token ? <Navigate to="/home" replace /> : children;
 };
 
-function App() {
-  const token = localStorage.getItem("jwtToken");
+const Layout = () => {
+  const location = useLocation();
+  const isAuthPage = location.pathname === "/login" || location.pathname === "/signup" || location.pathname === "/";
 
+  return (
+    <div className="min-h-screen flex flex-col">
+      <Navbar />
+      <div className="flex-1">
+        <Routes>
+          <Route
+            path="/login"
+            element={
+              <PublicRoute>
+                <Login />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/signup"
+            element={
+              <PublicRoute>
+                <Signup />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/home"
+            element={
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/blogs"
+            element={
+              <ProtectedRoute>
+                <Blogs />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/healthProblems"
+            element={
+              <ProtectedRoute>
+                <HealthProblems />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/sessions"
+            element={
+              <ProtectedRoute>
+                <Sessions />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/aboutus"
+            element={
+              <ProtectedRoute>
+                <AboutUs />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/quiz"
+            element={
+              <ProtectedRoute>
+                <Quiz />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/videos"
+            element={
+              <ProtectedRoute>
+                <Videos />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/appointment/:id"
+            element={
+              <ProtectedRoute>
+                <Appointment />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/my-appointments"
+            element={
+              <ProtectedRoute>
+                <MyAppointments />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/my-profile"
+            element={
+              <ProtectedRoute>
+                <MyProfile />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/diary"
+            element={
+              <ProtectedRoute>
+                <Diary />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/" element={<Navigate to="/login" replace />} />
+          <Route path="*" element={<Navigate to="/login" replace />} />
+        </Routes>
+      </div>
+      {!isAuthPage && <Footer />}
+      {!isAuthPage && <Chatbot />}
+    </div>
+  );
+};
+
+function App() {
   return (
     <AppProvider>
       <Router>
-        <div className="min-h-screen flex flex-col">
-          <Navbar />
-          <div className="flex-1">
-            <Routes>
-              <Route
-                path="/login"
-                element={
-                  <PublicRoute>
-                    <Login />
-                  </PublicRoute>
-                }
-              />
-              <Route
-                path="/signup"
-                element={
-                  <PublicRoute>
-                    <Signup />
-                  </PublicRoute>
-                }
-              />
-              <Route
-                path="/home"
-                element={
-                  <ProtectedRoute>
-                    <Home />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/blogs"
-                element={
-                  <ProtectedRoute>
-                    <Blogs />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/healthProblems"
-                element={
-                  <ProtectedRoute>
-                    <HealthProblems />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/sessions"
-                element={
-                  <ProtectedRoute>
-                    <Sessions />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/aboutus"
-                element={
-                  <ProtectedRoute>
-                    <AboutUs />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/quiz"
-                element={
-                  <ProtectedRoute>
-                    <Quiz />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/videos"
-                element={
-                  <ProtectedRoute>
-                    <Videos />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/appointment/:id"
-                element={
-                  <ProtectedRoute>
-                    <Appointment />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/my-appointments"
-                element={
-                  <ProtectedRoute>
-                    <MyAppointments />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/my-profile"
-                element={
-                  <ProtectedRoute>
-                    <MyProfile />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/diary"
-                element={
-                  <ProtectedRoute>
-                    <Diary />
-                  </ProtectedRoute>
-                }
-              />
-              <Route path="/" element={<Navigate to="/login" replace />} />
-              <Route path="*" element={<Navigate to="/login" replace />} />
-            </Routes>
-          </div>
-          {token && <Footer />}
-          {token && <Chatbot />}
-        </div>
+        <Layout />
       </Router>
     </AppProvider>
   );
